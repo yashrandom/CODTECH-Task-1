@@ -1,0 +1,60 @@
+/* hi there i am a student of btech 3rd sem studiying in manav ranchna international institute of research and studies i am here to show you the quiz game done by c++ langugage,here what we 
+need is that we have to implement the code by using string,vector and ater implement there things the output what we need is firstry we write the option and the compilere compiles the code
+and check that whether it is correct or not*/
+
+
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+// Define a structure for a Question
+struct Question {
+    string prompt;
+    string options[3];  // Assuming each question has 3 options
+    char correctAnswer;
+};
+
+// Function to run the quiz
+void runQuiz(vector<Question>& questions) {
+    int score = 0;
+    char userAnswer;
+    
+    for (int i = 0; i < questions.size(); ++i) {
+        cout << questions[i].prompt << endl;
+        cout << "Options:" << endl;
+        for (int j = 0; j < 3; ++j) {
+            cout << "(" << char('a' + j) << ") " << questions[i].options[j] << endl;
+        }
+        cout << "Your answer: ";
+        cin >> userAnswer;
+        userAnswer = tolower(userAnswer); // Convert user input to lowercase
+        
+        if (userAnswer == questions[i].correctAnswer) {
+            cout << "Correct!" << endl;
+            score++;
+        } else {
+            cout << "Incorrect. The correct answer is: " << questions[i].correctAnswer << endl;
+        }
+        cout << endl;
+    }
+    
+    cout << "Quiz completed!" << endl;
+    cout << "Your score is: " << score << " out of " << questions.size() << endl;
+}
+
+int main() {
+    // Create a vector of Question structures
+    vector<Question> questions = {
+        {"What is the capital of France?", {"Paris", "Rome", "Madrid"}, 'a'},
+        {"Who wrote 'Hamlet'?", {"William Shakespeare", "Charles Dickens", "Jane Austen"}, 'a'},
+        {"What is the largest planet in our solar system?", {"Earth", "Jupiter", "Mars"}, 'b'},
+        {"Who painted the Mona Lisa?", {"Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso"}, 'b'}
+    };
+    
+    // Run the quiz
+    cout << "Welcome to the Quiz!" << endl << endl;
+    runQuiz(questions);
+    
+    return 0;
+}
